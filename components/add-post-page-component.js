@@ -7,9 +7,10 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
     <div class="page-container">
       <div class="header-container"></div>
   <div class="form">
-        <h3 class="form-title">Добавить пост</h3></div>
+        <h3 class="form-title"> Публикация поста </h3></div>
         <div class="form-inputs">        
-          <button class="button" id="add-button">Выберите фото</button>
+          <button class="button" id="add-button">Добавить фото</button>
+          <div class="add-image-post"></div>
           <textarea class="textarea add-post-textarea" rows="4" placeholder="Опишите фотографию:"></textarea>
         </div>
       </div>
@@ -20,8 +21,8 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
 
     document.getElementById("add-button").addEventListener("click", () => {
       onAddPostClick({
-        description: "Описание картинки",
-        imageUrl: "https://image.png",
+        description: appEl.querySelector('.add-post-textarea').value,
+        imageUrl: imageUrl ,
       });
     });
   
@@ -31,6 +32,11 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
   });
 };
 
-
   render();
+  renderUploadImageComponent({
+    element: appEl.querySelector('.add-image-post'),
+    onImageUrlChange(newImageUrl) {
+      imageUrl = newImageUrl;
+    },
+  });
 }
