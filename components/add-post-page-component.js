@@ -1,4 +1,7 @@
 import { renderHeaderComponent } from "./header-component.js";
+import { renderUploadImageComponent } from "./upload-image-component.js";
+
+let imageUrl = "";
 
 export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
   const render = () => {
@@ -9,9 +12,10 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
   <div class="form">
         <h3 class="form-title"> Публикация поста </h3></div>
         <div class="form-inputs">        
-          <button class="button" id="add-button">Добавить фото</button>
+        
           <div class="add-image-post"></div>
           <textarea class="textarea add-post-textarea" rows="4" placeholder="Опишите фотографию:"></textarea>
+          // <button class="button" id="add-button">Опубликовать</button>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
-//const personalKey = "nalaliaK"
-const personalKey = "prod";
+const personalKey = "nalaliaK"
+//const personalKey = "prod";
 const baseHost = "https://webdev-hw-api.vercel.app";
 const postsHost = `${baseHost}/api/v1/${personalKey}/instapro`;
 
@@ -20,6 +20,23 @@ export function getPosts({ token }) {
     .then((data) => {
       return data.posts;
     });
+}
+export function newPost({ description, imageUrl, token }){
+  return fetch(postsHost, {
+    method: 'POST',
+    headers: {
+      Authorization: token,
+    },
+    body: JSON.stringify({
+      description: `${description}`,
+      imageUrl: `${imageUrl}`
+    })
+  }).then(response => {
+    if (response.status === 400) {
+      throw new Error('Ошибка');
+    }
+    return response.json();
+  })
 }
 
 // https://github.com/GlebkaF/webdev-hw-api/blob/main/pages/api/user/README.md#%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D0%B8%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%D1%81%D1%8F
