@@ -1,4 +1,4 @@
-import { getPosts } from "./api.js";
+import { getPosts, newPost } from "./api.js";
 import { renderAddPostPageComponent } from "./components/add-post-page-component.js";
 import { renderAuthPageComponent } from "./components/auth-page-component.js";
 import {
@@ -110,8 +110,12 @@ const renderApp = () => {
     return renderAddPostPageComponent({
       appEl,
       onAddPostClick({ description, imageUrl }) {
-        // TODO: реализовать добавление поста в API
-        console.log("Добавляю пост...", { description, imageUrl });
+        //  добавление поста в API
+        newPost({
+          description: description,
+          imageUrl: imageUrl,
+          token: getToken(),
+        });
         goToPage(POSTS_PAGE);
       },
     });
@@ -124,7 +128,7 @@ const renderApp = () => {
   }
 
   if (page === USER_POSTS_PAGE) {
-    // TODO: реализовать страницу фотографию пользвателя
+    // страница фотография пользователя
     appEl.innerHTML = "Здесь будет страница фотографий пользователя";
     return;
   }
