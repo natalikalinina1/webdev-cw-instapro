@@ -17,6 +17,9 @@ import {
   saveUserToLocalStorage,
 } from "./helpers.js";
 
+import { ru } from "date-fns/locale";
+import { formatDistanceToNow } from "date-fns";
+
 export let user = getUserFromLocalStorage();
 export let page = null;
 export let posts = [];
@@ -31,10 +34,12 @@ export const logout = () => {
   removeUserFromLocalStorage();
   goToPage(POSTS_PAGE);
 };
+export const formatDate = (date) => {
+  return formatDistanceToNow(new Date(date), { addSuffix: true, locale: ru });
+};
 
-/**
- * Включает страницу приложения
- */
+// Включает страницу приложения
+ 
 export const goToPage = (newPage, data) => {
   if (
     [
@@ -68,11 +73,8 @@ export const goToPage = (newPage, data) => {
     }
 
     if (newPage === USER_POSTS_PAGE) {
-     /* // TODO: реализовать получение постов юзера из API
-      console.log("Открываю страницу пользователя: ", data.userId);
-      page = USER_POSTS_PAGE;
-      posts = [];
-      return renderApp();*/
+      // TODO: реализовать получение постов юзера из API
+      
       page = LOADING_PAGE;
       renderApp();
 
@@ -136,8 +138,7 @@ const renderApp = () => {
   }
   if (page === USER_POSTS_PAGE) {
     // страница фотография пользователя
-   // appEl.innerHTML = "Здесь будет страница фотографий пользователя";
-   // return;
+
    return renderUserPostsPageComponent({ appEl });
   }
 };

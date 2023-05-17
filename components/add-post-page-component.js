@@ -15,7 +15,7 @@ export function renderAddPostPageComponent({ appEl, onAddPostClick }) {
         
           <div class="add-image-post"></div>
           <textarea class="textarea add-post-textarea" rows="4" placeholder="Опишите фотографию:"></textarea>
-          // <button class="button" id="add-button">Опубликовать</button>
+           <button class="button" id="add-button">Опубликовать</button>
         </div>
       </div>
     </div>

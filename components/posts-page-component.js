@@ -1,6 +1,6 @@
 import { USER_POSTS_PAGE } from "../routes.js";
 import { renderHeaderComponent } from "./header-component.js";
-import { posts, goToPage, getToken } from "../index.js";
+import { posts, goToPage, getToken, formatDate } from "../index.js";
 import { like, dislike } from "../api.js";
 import { POSTS_PAGE } from "../routes.js";
 import { LOADING_PAGE } from "../routes.js";
@@ -36,7 +36,7 @@ export function renderPostsPageComponent({ appEl }) {
       <li class="post">
         <div class="post-header" data-user-id=${post.user.id}>
           <img src="${post.user.imageUrl}"class="post-header__user-image">
-          <p class="post-header__user-name">${post.user.name}</p>
+          <p class="post-header__user-name">${post.user.name} : </p>
         </div>
         <div class="post-image-container">
           <img class="post-image" src="${post.imageUrl}">
@@ -59,7 +59,7 @@ export function renderPostsPageComponent({ appEl }) {
               ${post.description}
           </p>
           <p class="post-date">
-            ${post.createdAt}
+            ${formatDate(post.createdAt)}
           </p>
       </li>
     `;
