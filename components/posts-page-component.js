@@ -7,10 +7,6 @@ import { LOADING_PAGE } from "../routes.js";
 
 export function renderPostsPageComponent({ appEl }) {
   //  рендер постов из api
-  /**
-   * TODO: чтобы отформатировать дату создания поста в виде "19 минут назад"
-   * можно использовать https://date-fns.org/v2.29.3/docs/formatDistanceToNow
-   */
   const appHtml = `
               <div class="page-container">
                 <div class="header-container"></div>

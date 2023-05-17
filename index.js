@@ -39,7 +39,6 @@ export const formatDate = (date) => {
 };
 
 // Включает страницу приложения
- 
 export const goToPage = (newPage, data) => {
   if (
     [
